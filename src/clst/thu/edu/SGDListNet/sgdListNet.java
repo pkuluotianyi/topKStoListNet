@@ -47,6 +47,8 @@ public class sgdListNet {
 		String iterations = "";
 		String learningRate = "";
 		String sgdrate = "";
+		String samplingMethods = "";
+		String numberOfsampling = "";
 		
 		if(args.length < 2)
 		{
@@ -78,6 +80,7 @@ public class sgdListNet {
 			System.out.println("\t[ -metric2T <metric> ]\tMetric to evaluate on the test data (default=" + trainMetric + ")");
 			System.out.println("\t[ -score <file>]\tStore ranker's score for each object being ranked (has to be used with -rank)");
 			System.out.println("\t[ -norm ]\t\tNormalize feature vectors (similar to -norm for training/tuning)");
+			System.out.println("\t[ -samplingMethods ]\t\t Uniform, fixedProba and adaptiveProba)");
 
 			System.out.println("");
 			return;
@@ -90,7 +93,7 @@ public class sgdListNet {
 			if(args[i].compareTo("-train")==0) {
 				trainFile = args[++i];
 			} else if(args[i].compareTo("-metric2t")==0) {
-				trainMetric = args[++i];
+				trainMetric = args[++i];				
 			} else if(args[i].compareTo("-metric2T")==0) {
 				testMetric = args[++i];	
 			} else if(args[i].compareTo("-k")==0) {
@@ -99,12 +102,18 @@ public class sgdListNet {
 			} else if(args[i].compareTo("-learningRate")==0) {
 				learningRate = args[++i];
 				ListNet.learningRate = Double.parseDouble(learningRate);
+			} else if(args[i].compareTo("-samplingMethods")==0) {
+					samplingMethods = args[++i];
+					ListNet.samplingMethods = samplingMethods;
 			} else if(args[i].compareTo("-iterations")==0) {
 				iterations = args[++i];
 				ListNet.nIteration = Integer.parseInt(iterations);
 			} else if(args[i].compareTo("-sgdrate")==0) {
 				sgdrate = args[++i];
 				ListNet.sgdrate = Integer.parseInt(sgdrate);
+			} else if(args[i].compareTo("-numberOfsampling")==0) {
+				numberOfsampling = args[++i];
+				ListNet.numberOfsampling = Integer.parseInt(numberOfsampling);
 			} else if(args[i].compareTo("-validate")==0) {
 				validationFile = args[++i];
 			} else if(args[i].compareTo("-test")==0) {

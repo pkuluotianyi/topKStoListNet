@@ -19,6 +19,9 @@ public class ListNet extends RankNet {
 	public static int nIteration = 30;
 	public static double learningRate = 1.0E-7;
 	public static int sgdrate = 1;
+	public static String samplingMethods = "Uniform";
+	public static int numberOfsampling = 5;
+	
 	//public static int nHiddenLayer = 0;//FIXED, it doesn't work with hidden layer
 	
 	
@@ -78,6 +81,8 @@ public class ListNet extends RankNet {
 		if(error > lastError && Neuron.learningRate > 1.0E-30) {		
 			Neuron.learningRate *= 1.0E-1;
 			PRINTLN("Learning rate: " +  Neuron.learningRate);
+			
+			
 			//learningRate = Neuron.learningRate;
 		}
 		lastError = error;
@@ -108,13 +113,9 @@ public class ListNet extends RankNet {
 		long startTime = System.currentTimeMillis();
 		for(int i=1;i<=nIteration;i++)
 		{
-			if (kNum == 2) {
-				for(int j=0;j<samples.size()/sgdrate;j++)
-				//for(int j=0;j<471/sgdrate;j++)
+			if (kNum >= 2) {
+				for(int j=0;j<samples.size();j++)
 				{
-//					if (j % 50 == 1) {
-//						System.out.println(j);
-//					}
 					int maxNum = samples.size() - 1;
 					Random random = new Random();
 				    int s = random.nextInt(maxNum);
@@ -129,21 +130,21 @@ public class ListNet extends RankNet {
 				}
 			}
 			if (kNum == 1) {
-				for(int j=0;j<samples.size()/sgdrate;j++)
+				for(int j=0;j<samples.size();j++)
 				//for(int j=0;j<171/sgdrate;j++)
-				{		
-					int maxNum = samples.size() - 1;
-					Random random = new Random();
-				    int s = random.nextInt(maxNum);
-				    //System.out.println(s);
-				    float[] labels = feedForward(samples.get(s));
-				    backPropagate(labels);
-				    clearNeuronOutputs();
+				{	
+//					//System.out.println(j);
+//					int maxNum = samples.size() - 1;
+//					Random random = new Random();
+//				    int s = random.nextInt(maxNum);
+//				    //System.out.println(s);
+//				    float[] labels = feedForward(samples.get(s));
+//				    backPropagate(labels);
+//				    clearNeuronOutputs();
 					
-					
-//					float[] labels = feedForward(samples.get(j));
-//					backPropagate(labels);
-//					clearNeuronOutputs();
+					float[] labels = feedForward(samples.get(j));
+					backPropagate(labels);
+					clearNeuronOutputs();
 				}
 			}
 			if (kNum == 0) {

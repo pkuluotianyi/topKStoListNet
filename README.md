@@ -1,4 +1,5 @@
 # topKStoListNet
+<p><a href="http://aclweb.org/anthology/D/D14/D14-1074.pdf">Chinese Poetry Generation with Recurrent Neural Networks</a></p>
 This is implementation of Stochastic ListNet(A listwise learning to rank algorithm) top-k algorithm. We extend ListNet's fast computing algorithm - Top k probabilities algorithm to k = 2
 and adopt three new sampling approaches to speed up training time. Results showed that our approach reduce the training complexity and get better p@1 performance.
 

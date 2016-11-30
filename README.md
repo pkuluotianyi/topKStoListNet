@@ -1,8 +1,6 @@
 # topKStoListNet
-<p>This is implementation of Stochastic ListNet(A listwise learning to rank algorithm) top-k algorithm. We extend ListNet's fast computing algorithm - Top k probabilities algorithm to k > 2
+<p>This is implementation of <a href="http://www.aclweb.org/anthology/D/D15/D15-1079.pdf">Stochastic Top-k ListNet (EMNLP 2015 LONG ORAL PAPER)</a>. We extend ListNet's fast computing algorithm - Top k probabilities algorithm to k > 2
 and adopt three new sampling approaches to speed up training time. Results showed that our approach reduce the training complexity and get better p@1 performance.</p>
-
-<p><a href="http://www.aclweb.org/anthology/D/D15/D15-1079.pdf">Stochastic Top-k ListNet (EMNLP 2015 LONG ORAL PAPER)</a></p>
 
 <p>The definitions of parameters are as following:</p>
 <p>	-train               The location of your tarining set file. e.g. C:\MQ2008\Fold1\train.txt</p>
